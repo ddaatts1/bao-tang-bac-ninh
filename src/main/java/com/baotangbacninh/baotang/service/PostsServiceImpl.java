@@ -5,6 +5,8 @@ import com.baotangbacninh.baotang.model.Posts;
 import com.baotangbacninh.baotang.repository.PostsRepository;
 import com.baotangbacninh.baotang.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +17,11 @@ public class PostsServiceImpl implements PostsService {
     @Autowired
     PostsRepository postsRepository;
 
+
     @Override
-    public List<Posts> getTinNoiBat(Category category){
-        return postsRepository.findByPostsCategory(category);
+    public Page<Posts> getTin(Category category, int page){
+        return
+                postsRepository.findByPostsCategory(category, PageRequest.of(page,5));
     }
 
     @Override
@@ -40,6 +44,7 @@ public class PostsServiceImpl implements PostsService {
     public void updatePosts(int id, Posts posts){
         Posts updatePosts = postsRepository.findById(id).get();
         updatePosts.setPublish(posts.isPublish());
+        if(posts.getPostsImage()!= null)
         updatePosts.setPostsImage(posts.getPostsImage());
         updatePosts.setPostsContent(posts.getPostsContent());
         updatePosts.setPostsTitle(posts.getPostsTitle());

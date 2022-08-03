@@ -66,6 +66,13 @@
       </tbody>
     </table>
 
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" th:href="@{/admin/show(category = ${category},page =${previousOrFirstPageable})}">Trước</a></li>
+        <li  th:if="${totalPage > 0} " class="page-item" th:each=" i: ${#numbers.sequence(1,totalPage)}"><a th:style="${currentPage == i?'background-color: darkgrey;':''}" class="page-link" th:href="@{/admin/show(category = ${category},page =${i})}" th:text="${i}"></a></li>
+        <li class="page-item"><a class="page-link" th:href="@{/admin/show(category = ${category},page =${nextOrLastPageable})}" >Sau</a></li>
+      </ul>
+    </nav>
 
   </div>
 </div>

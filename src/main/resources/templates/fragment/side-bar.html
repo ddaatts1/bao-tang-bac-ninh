@@ -15,8 +15,8 @@
     <ul class="list-unstyled components">
         <!--      <p>Dummy Heading</p>-->
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+            <a href="#tintuc" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tin tức - Sự kiện</a>
+            <ul class="collapse list-unstyled" id="tintuc">
                 <li>
                     <a th:href="@{/admin/show(category = Tin_Noi_Bat)}">Tin nổi bật</a>
 
@@ -24,9 +24,76 @@
                 <li>
                     <a th:href="@{/admin/show(category=Su_Kien_Sap_Dien_Ra)}">Sự kiện sắp diễn ra</a>
                 </li>
-
             </ul>
         </li>
+
+        <li class="active">
+            <a href="#trungbay" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Trưng bày</a>
+            <ul class="collapse list-unstyled" id="trungbay">
+                <li>
+                    <a th:href="@{/admin/show(category = Trung_Bay_Thuong_Xuyen)}">Trưng bày thường xuyên</a>
+
+                </li>
+                <li>
+                    <a th:href="@{/admin/show(category=Trung_Bay_Chuyen_De)}">Trưng bày chuyên đề</a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/show(category=Trung_Bay_Luu_Dong)}">Trưng bày lưu động</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="active">
+            <a href="#nghiencuu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Nghiên cứu - Sưu tầm</a>
+            <ul class="collapse list-unstyled" id="nghiencuu">
+                <li>
+                    <a th:href="@{/admin/show(category = Khai_Quat_khao_Co_Hoc)}">Khai quật khảo cổ học</a>
+
+                </li>
+                <li>
+                    <a th:href="@{/admin/show(category=Cong_tac_Suu_Tam)}">Công tác sưu tầm</a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/show(category=De_Tai_Khoa_Hoc_An_Pham)}">Đề tài khoa học ấn phẩm</a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/show(category=Kiem_Thuc_Lich_Su_Van_Hoa)}">Kieend thức lịch sử văn hóa</a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li class="active">
+            <a href="#hienvat" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">HIện vật</a>
+            <ul class="collapse list-unstyled" id="hienvat">
+                <li>
+                    <a th:href="@{/admin/show(category = Bao_Vat_Quoc_Gia)}">Bảo vật quốc gia</a>
+
+                </li>
+                <li>
+                    <a th:href="@{/admin/show(category=Cac_Bo_Suu_Tap)}">Các bộ sưu tập</a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/show(category=Hien_Vat_Tieu_Bieu)}">hiện vật tiêu biểu</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="active">
+            <a href="#giaoduc" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Giáo dục</a>
+            <ul class="collapse list-unstyled" id="giaoduc">
+                <li>
+                    <a th:href="@{/admin/show(category = Huong_Dan_Tham_Quan)}">hướng dẫn tham quan</a>
+
+                </li>
+                <li>
+                    <a th:href="@{/admin/show(category=Hoat_Dong_Giao_Duc)}">Hoạt động giáo dục</a>
+                </li>
+            </ul>
+        </li>
+
+
+
     </ul>
 </nav>
 

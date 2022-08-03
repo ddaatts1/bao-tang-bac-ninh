@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -19,6 +22,7 @@ public class Posts {
     int id;
 
     @Column(name = "posts_name")
+    @NotBlank(message = "Tên bài không được để trống!")
     String postsName;
     @Column(name = "publish")
     boolean publish;
@@ -26,9 +30,11 @@ public class Posts {
     String postsSource;
     @Column(name = "posts_image")
     String postsImage;
+    @NotBlank
     @Column(name = "posts_title")
     String postsTitle;
     @Column(name = "posts_content")
+            @NotBlank
     String postsContent;
     @Column(name = "posts_category")
     Category postsCategory;

@@ -37,34 +37,51 @@
         <nav th:replace="fragment/nav ::navbar"></nav>
 
         <div class="box">
-            <div class="card" style="width: 500px;">
+            <div class="card" >
                 <form th:object="${posts}" th:action="@{/admin/add}" th:method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="name">Tên: </label>
+                        <label for="name">Tên<span style="color:red;">*</span>: </label>
                         <input th:field="*{postsName}"  type="text"  class="form-control"
                                id="name" aria-describedby="emailHelp" placeholder="Tên sản phẩm">
-<!--                        <span th:if="${#fields.hasErrors('productName')}">sdsdsdsdsdsd</span>-->
+                        <small style="color:red;"  th:if="${#fields.hasErrors('postsName')}" >
+                            Tên không được để trống!</small>
                     </div>
 
+                    <div class="form-group">
+                        <label>Xuất bản<span style="color:red;">*</span>: </label>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" th:field="*{publish}" value="true" id="1" class="custom-control-input">
+                                <label class="custom-control-label" for="1" >Có</label>
+                            </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" th:field="*{publish}" value="false" id="2" class="custom-control-input">
+                            <label class="custom-control-label" for="2" >Không</label>
+                        </div>
+                    </div>
                     <input th:field="*{postsCategory}" type="hidden">
 
                     <div class="form-group">
                         <label for="source">Nguồn: </label>
                         <input th:field="*{postsSource}"  type="text"  class="form-control"
                                id="source" aria-describedby="emailHelp" placeholder="Nguồn-Tác giả">
-                        <!--                        <span th:if="${#fields.hasErrors('productName')}">sdsdsdsdsdsd</span>-->
                     </div>
                     <div class="form-group">
-                        <label for="title">Tiêu đề: </label>
+                        <label for="title">Tiêu đề<span style="color:red;">*</span>: </label>
                         <input th:field="*{postsTitle}"  type="text"  class="form-control"
                                id="title" aria-describedby="emailHelp" placeholder="Tiêu đề">
-                        <!--                        <span th:if="${#fields.hasErrors('productName')}">sdsdsdsdsdsd</span>-->
+                        <small style="color:red;"  th:if="${#fields.hasErrors('postsTitle')}" >
+                            Tiêu đề không được để trống!</small>
                     </div>
                     <div class="form-group">
-                        <label for="pcontent">Nội dung: </label>
-                        <input th:field="*{postsContent}"  type="text"  class="form-control"
-                               id="pcontent" aria-describedby="emailHelp" placeholder="Nội dung">
-                        <!--                        <span th:if="${#fields.hasErrors('productName')}">sdsdsdsdsdsd</span>-->
+                        <label for="exampleFormControlFile1">Hình ảnh: </label>
+                        <input name="img" type="file" accept="image/png, image/jepg" class="form-control-file"
+                               id="exampleFormControlFile1">
+                    </div>
+                    <div class="form-group">
+                        <label for="pcontent">Nội dung<span style="color:red;">*</span>: </label>
+                        <textarea th:field="*{postsContent}" class="form-control" id="pcontent" rows="8"></textarea>
+                        <small style="color:red;"  th:if="${#fields.hasErrors('postsContent')}" >
+                            Nội dung không được để trống!</small>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Thêm</button>
@@ -72,8 +89,6 @@
 
             </div>
         </div>
-
-
 
     </div>
 </div>

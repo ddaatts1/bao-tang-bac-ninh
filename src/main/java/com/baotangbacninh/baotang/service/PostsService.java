@@ -2,11 +2,14 @@ package com.baotangbacninh.baotang.service;
 
 import com.baotangbacninh.baotang.Enum.Category;
 import com.baotangbacninh.baotang.model.Posts;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface PostsService {
-    List<Posts> getTinNoiBat(Category category);
+
+
+    Page<Posts> getTin(Category category, int page);
 
     void addPosts(Posts posts);
 
