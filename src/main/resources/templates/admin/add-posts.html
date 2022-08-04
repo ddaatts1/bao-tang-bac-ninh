@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label for="name">Tên<span style="color:red;">*</span>: </label>
                         <input th:field="*{postsName}"  type="text"  class="form-control"
-                               id="name" aria-describedby="emailHelp" placeholder="Tên sản phẩm">
+                               id="name" aria-describedby="emailHelp" placeholder="Tên bài viết">
                         <small style="color:red;"  th:if="${#fields.hasErrors('postsName')}" >
                             Tên không được để trống!</small>
                     </div>

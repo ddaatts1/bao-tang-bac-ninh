@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -38,6 +39,8 @@ public class Posts {
     String postsContent;
     @Column(name = "posts_category")
     Category postsCategory;
+    @Column(name = "date")
+    LocalDate date;
 
     public Posts(Category postsCategory) {
         this.postsCategory = postsCategory;

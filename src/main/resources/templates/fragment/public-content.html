@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div  th:fragment="publicContent" th:each="posts:${list}" class="content">
+    <a th:href="@{/detail/{PostsId}(PostsId = ${posts.getId()})}">   <img th:src="@{'/image/'+${posts.getPostsImage()}}" width="250px" height="100%" alt="img">
+    </a>
+    <span>
+            <a th:href="@{/detail/{PostsId}(PostsId = ${posts.getId()})}"><h4 th:hre th:text="${posts.getPostsTitle()}"></h4></a>
+            <span th:text="${posts.getDate()}"></span>
+            <p th:text="${posts.getPostsContent()}">
+
+            </p>
+        </span>
+
+</div>
+
+<div class="detailContent" th:fragment="publicContentDetail">
+    <h3 th:text="${posts.getPostsTitle()}"></h3>
+    <span th:text="${posts.getPostsContent()}"></span>
+
+</div>
+
+
+</body>
+</html>

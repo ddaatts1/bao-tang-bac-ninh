@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -63,8 +64,7 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             return "/admin/add-posts";
         }
-
-
+        posts.setDate(LocalDate.now());
         if (!img.isEmpty()) {
             posts.setPostsImage(img.getOriginalFilename());
             try {
@@ -115,5 +115,7 @@ public class AdminController {
 
         return show(model, posts.getPostsCategory(),1);
     }
+
+
 
 }

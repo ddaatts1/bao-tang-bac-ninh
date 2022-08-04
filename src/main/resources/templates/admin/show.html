@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Collapsible sidebar using Bootstrap 4</title>
+  <title></title>
 
   <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -35,8 +35,10 @@
 
     <!--nav bar-->
     <nav th:replace="fragment/nav ::navbar"></nav>
-    <button class="btn btn-light"><a
-            th:href="@{/admin/add(category= ${category})}">Thêm</a>
+    <button class="btn btn-light">
+      <a th:href="@{/admin/add(category= ${category})}">Thêm</a>
+<!--      <a th:href="@{/admin/add/{category}/{page}(category= ${category},page = 1)}">test</a>-->
+
     </button>
     <table class="table table-striped">
       <thead>

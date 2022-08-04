@@ -38,8 +38,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/").permitAll()
-                        .antMatchers("/admin/**").hasAuthority("ADMIN")
+        http.authorizeRequests().antMatchers("/admin/**").authenticated().
+                antMatchers("/admin/**").hasAuthority("ADMIN").
+                antMatchers("/**").permitAll()
+                .antMatchers("/image/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().
                 loginProcessingUrl("/j_spring_security_check").
