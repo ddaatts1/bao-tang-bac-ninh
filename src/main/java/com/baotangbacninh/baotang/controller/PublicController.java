@@ -24,7 +24,7 @@ public class PublicController {
 
     }
 
-    @GetMapping("/{category}")
+    @GetMapping("{category}")
     public String show(@PathVariable String category,
                        @RequestParam int page,
                        Model model){
@@ -34,7 +34,7 @@ public class PublicController {
         model.addAttribute("totalPage",list.getTotalPages());
         model.addAttribute("currentPage",page==0?1:page);
         model.addAttribute("list", list);
-        model.addAttribute("category", Category.valueOf(category));
+        model.addAttribute("category", category);
         model.addAttribute("list",list);
         return "/public/public-home-page";
 
@@ -44,5 +44,11 @@ public class PublicController {
         model.addAttribute("posts",postsService.findById(PostsId));
         return "/public/public-posts-detail";
     }
+    @GetMapping("/introduction")
+    public String intro(Model model,@RequestParam Category category){
+        if(postsService.findPostsByCategory(category).get().stream().count() >0)
+        model.addAttribute("posts",postsService.findPostsByCategory(category).get().get(0));
+        else model.addAttribute("posts",new Posts());
+return "/public/introduction";    }
 
 }

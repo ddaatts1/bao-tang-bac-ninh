@@ -1,72 +1,109 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <link rel="stylesheet" th:href="@{/css/public-nav.css}">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
 
-<div class="header" th:fragment="publicNav">
-    <img th:src="@{/image/banner.png}" alt="banner">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="header" th:fragment="publicNav">
+        <img th:src="@{/image/banner.png}" alt="banner">
+        <nav class="navbar navbar-expand-lg navbar-dark" id="topNav">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="dropdown"><a href="#" class="dropbtn">Giới thiệu <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a th:href="@{/introduction(category = Gioi_Thieu_Chung)}">Giới thiệu chung</a></li>
+                            <li><a th:href="@{/introduction(category = Co_Cau_To_Chuc_So_So_CCTC)}">Cơ cấu tổ chức - sơ
+                                    đồ CCTC</a></li>
+                            <li><a th:href="@{/introduction(category = Chuc_Nang_Nhiem_Vu)}">Chức năng, nhiệm vụ</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropbtn">Tin tức - Sự kiện<i
+                                class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a th:href="@{/{category}(category = Tin_Noi_Bat,page =1)}">Tin nổi bật</a></li>
+                            <li><a th:href="@{/{category}(category = Su_Kien_Sap_Dien_Ra,page =1)}">Sự kiện sắp diễn
+                                    ra</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropbtn">Trưng bày <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a th:href="@{/{category}(category = Trung_Bay_Thuong_Xuyen,page =1)}">Trưng bày thường
+                                    xuyên</a></li>
+                            <li><a th:href="@{/{category}(category = Trung_Bay_Chuyen_De,page =1)}">Trưng bày chuyên
+                                    đề</a></li>
+                            <li><a th:href="@{/{category}(category = Trung_Bay_Luu_Dong,page =1)}">Trưng bày lưu
+                                    động</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropbtn">Nghiên cứu- Sưu tầm<i
+                                class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a th:href="@{/{category}(category = Khai_Quat_khao_Co_Hoc,page =1)}">Khai quật khảo cổ
+                                    học</a></li>
+                            <li><a th:href="@{/{category}(category = Cong_tac_Suu_Tam,page =1)}">Công tác sưu tầm</a>
+                            </li>
+                            <li><a th:href="@{/{category}(category = De_Tai_Khoa_Hoc_An_Pham,page =1)}">Đề tài khoa học
+                                    - Ấn phẩm</a></li>
+                            <li><a th:href="@{/{category}(category = Kiem_Thuc_Lich_Su_Van_Hoa,page =1)}">Kiến thức lịch
+                                    sử - Văn hóa</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropbtn">Hiện vật <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a th:href="@{/{category}(category = Bao_Vat_Quoc_Gia,page =1)}">Bảo vật quốc gia</a>
+                            </li>
+                            <li><a th:href="@{/{category}(category = Cac_Bo_Suu_Tap,page =1)}">Các bộ sưu tập hiện
+                                    vật</a></li>
+                            <li><a th:href="@{/{category}(category = Hien_Vat_Tieu_Bieu,page =1)}">Hiện vật tiêu
+                                    biểu</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropbtn">Giáo dục <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a th:href="@{/{category}(category = Huong_Dan_Tham_Quan,page =1)}">Hướng dẫn tham
+                                    quan</a></li>
+                            <li><a th:href="@{/{category}(category = Hoat_Dong_Giao_Duc,page =1)}">Hoạt động giáo
+                                    dục</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropbtn">Thông tin hữu ích <i
+                                class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a th:href="@{/{category}(category = Tin_Noi_Bat,page =1)}">Thời gian mở cửa</a></li>
+                            <li><a th:href="@{/{category}(category = Tin_Noi_Bat,page =1)}">Nội quy tham quan</a></li>
+                            <li><a th:href="@{/{category}(category = Tin_Noi_Bat,page =1)}">Chỉ dẫn</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="dropdown"><a href="https://baotangbacninh.vn" class="nav-link">Trang chủ</a></li>
-                <li class="dropdown"><a href="#" class="dropbtn">Giới thiệu <i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li><a href="https://baotangbacninh.vn/gt-chung">Giới thiệu chung</a></li>
-                        <li><a href="https://baotangbacninh.vn/co-cau-to-chuc">Cơ cấu tổ chức - sơ đồ CCTC</a></li>
-                        <li><a href="https://baotangbacninh.vn/chuc-nang-nhiem-vu">Chức năng, nhiệm vụ</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropbtn">Tin tức - Sự kiện<i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li><a th:href="@{/{category}(category = Tin_Noi_Bat,page =1)}">Tin nổi bật</a></li>
-                        <li><a th:href="@{/{category}(category = Su_Kien_Sap_Dien_Ra,page =1)}">Sự kiện sắp diễn ra</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropbtn">Trưng bày <i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li><a th:href="@{/{category}(category = Trung_Bay_Thuong_Xuyen,page =1)}">Trưng bày thường xuyên</a></li>
-                        <li><a th:href="@{/{category}(category = Trung_Bay_Chuyen_De,page =1)}">Trưng bày chuyên đề</a></li>
-                        <li><a th:href="@{/{category}(category = Trung_Bay_Luu_Dong,page =1)}">Trưng bày lưu động</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropbtn">Nghiên cứu- Sưu tầm<i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li><a th:href="@{/{category}(category = Khai_Quat_khao_Co_Hoc,page =1)}">Khai quật khảo cổ học</a></li>
-                        <li><a th:href="@{/{category}(category = Cong_tac_Suu_Tam,page =1)}">Công tác sưu tầm</a></li>
-                        <li><a th:href="@{/{category}(category = De_Tai_Khoa_Hoc_An_Pham,page =1)}">Đề tài khoa học - Ấn phẩm</a></li>
-                        <li><a th:href="@{/{category}(category = Kiem_Thuc_Lich_Su_Van_Hoa,page =1)}">Kiến thức lịch sử - Văn hóa</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropbtn">Hiện vật <i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li><a th:href="@{/{category}(category = Bao_Vat_Quoc_Gia,page =1)}">Bảo vật quốc gia</a></li>
-                        <li><a th:href="@{/{category}(category = Cac_Bo_Suu_Tap,page =1)}">Các bộ sưu tập hiện vật</a></li>
-                        <li><a th:href="@{/{category}(category = Hien_Vat_Tieu_Bieu,page =1)}">Hiện vật tiêu biểu</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropbtn">Giáo dục <i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li><a th:href="@{/{category}(category = Huong_Dan_Tham_Quan,page =1)}">Hướng dẫn tham quan</a></li>
-                        <li><a th:href="@{/{category}(category = Hoat_Dong_Giao_Duc,page =1)}">Hoạt động giáo dục</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropbtn">Thông tin hữu ích <i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li><a th:href="@{/{category}(category = Tin_Noi_Bat,page =1)}">Thời gian mở cửa</a></li>
-                        <li><a th:href="@{/{category}(category = Tin_Noi_Bat,page =1)}">Nội quy tham quan</a></li>
-                        <li><a th:href="@{/{category}(category = Tin_Noi_Bat,page =1)}">Chỉ dẫn</a></li>
-                    </ul>
-                </li>
-            </ul>
+    </div>
+
+
+    <div th:fragment="textRunner" class="runtext-container">
+        <div class="main-runtext">
+            <span id="time"></span>
+
+            <marquee direction="" onmouseover="this.stop();" onmouseout="this.start();">
+
+                <div class="holder">
+                    <div class="text-container">
+                        <a data-fancybox-group="gallery" class="fancybox" href="#"
+                            title="THE ELECTRIC LIGHTING ACT: section 35">Chào mừng đến vói Bắc Ninh</a>
+                    </div>
+                </div>
+
+            </marquee>
         </div>
-    </nav>
-
-</div>
+    </div>
 
 </body>
+
 </html>

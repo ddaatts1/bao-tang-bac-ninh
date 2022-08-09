@@ -12,7 +12,7 @@
     <span>
             <a th:href="@{/detail/{PostsId}(PostsId = ${posts.getId()})}"><h4 th:hre th:text="${posts.getPostsTitle()}"></h4></a>
             <span th:text="${posts.getDate()}"></span>
-            <p th:text="${posts.getPostsContent()}">
+            <p class="pcontent" th:text="${posts.getPostsName()}">
 
             </p>
         </span>
@@ -21,7 +21,7 @@
 
 <div class="detailContent" th:fragment="publicContentDetail">
     <h3 th:text="${posts.getPostsTitle()}"></h3>
-    <span th:text="${posts.getPostsContent()}"></span>
+    <span th:utext="${posts.getPostsContent()}"></span>
 
 </div>
 

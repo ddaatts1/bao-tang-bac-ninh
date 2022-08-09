@@ -15,4 +15,7 @@ public enum Category {
     Hien_Vat_Tieu_Bieu,
     Huong_Dan_Tham_Quan,
     Hoat_Dong_Giao_Duc,
+    Gioi_Thieu_Chung,
+    Co_Cau_To_Chuc_So_So_CCTC,
+    Chuc_Nang_Nhiem_Vu
 }

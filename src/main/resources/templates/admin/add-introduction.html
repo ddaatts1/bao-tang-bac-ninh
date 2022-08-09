@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 4</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+            plugins: [
+                'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+                'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+                'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
+                'alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+        });
+    </script>
+</head>
+
+<body>
+<div class="wrapper">
+
+    <!--  sidebar-->
+    <nav th:replace="fragment/side-bar :: sidebar"></nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <!--nav bar-->
+        <nav th:replace="fragment/nav ::navbar"></nav>
+
+        <div class="box">
+            <div class="card">
+                <form th:object="${posts}" th:action="@{/admin/addIntroduction}" th:method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Tên<span style="color:red;">*</span>: </label>
+                        <input th:field="*{postsName}" type="text" class="form-control" id="name"
+                               aria-describedby="emailHelp" placeholder="Tên bài viết">
+                        <small style="color:red;" th:if="${#fields.hasErrors('postsName')}">
+                            Tên không được để trống!</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Xuất bản<span style="color:red;">*</span>: </label>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" th:field="*{publish}" value="true" id="1"
+                                   class="custom-control-input">
+                            <label class="custom-control-label" for="1">Có</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" th:field="*{publish}" value="false" id="2"
+                                   class="custom-control-input">
+                            <label class="custom-control-label" for="2">Không</label>
+                        </div>
+                    </div>
+                    <input th:field="*{postsCategory}" type="hidden">
+
+                    <div class="form-group">
+                        <label for="source">Nguồn: </label>
+                        <input th:field="*{postsSource}" type="text" class="form-control" id="source"
+                               aria-describedby="emailHelp" placeholder="Nguồn-Tác giả">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Tiêu đề<span style="color:red;">*</span>: </label>
+                        <input th:field="*{postsTitle}" type="text" class="form-control" id="title"
+                               aria-describedby="emailHelp" placeholder="Tiêu đề">
+                        <small style="color:red;" th:if="${#fields.hasErrors('postsTitle')}">
+                            Tiêu đề không được để trống!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Hình ảnh: </label>
+                        <input multiple="multiple" name="img" type="file" accept="image/jpeg, image/png, image/jpg"
+                               class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                    <div class="form-group">
+                        <label for="mytextarea">Nội dung<span style="color:red;">*</span>: </label>
+                        <textarea th:field="*{postsContent}" class="form-control" id="mytextarea" rows="8"></textarea>
+                        <small style="color:red;" th:if="${#fields.hasErrors('postsContent')}">
+                            Nội dung không được để trống!</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

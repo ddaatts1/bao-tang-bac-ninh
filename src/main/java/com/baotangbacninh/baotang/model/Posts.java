@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Data
@@ -29,8 +29,6 @@ public class Posts {
     boolean publish;
     @Column(name = "posts_source")
     String postsSource;
-    @Column(name = "posts_image")
-    String postsImage;
     @NotBlank
     @Column(name = "posts_title")
     String postsTitle;
@@ -41,6 +39,15 @@ public class Posts {
     Category postsCategory;
     @Column(name = "date")
     LocalDate date;
+
+    @OneToMany(mappedBy = "posts")
+    List<Image> imageList;
+
+    public String getPostsImage(){
+        if(!imageList.isEmpty())
+        return imageList.get(0).getImageName();
+        return "lion.png";
+    }
 
     public Posts(Category postsCategory) {
         this.postsCategory = postsCategory;
